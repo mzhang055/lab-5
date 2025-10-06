@@ -326,7 +326,8 @@ public class Application {
     //  modify this method so that it takes in a getTopGradeUseCase
     //              Note: this will require you to update the code that calls this method.
     private static JPanel createManageTeamCard(JFrame jFrame, LeaveTeamUseCase leaveTeamUseCase,
-                                               GetAverageGradeUseCase getAverageGradeUseCase) {
+                                               GetAverageGradeUseCase getAverageGradeUseCase,
+                                               GetTopGradeUseCase getTopGradeUseCase) {
         final JPanel theCard = new JPanel();
         theCard.setLayout(new GridLayout(ROWS, COLS));
         final JTextField courseField = new JTextField(20);
@@ -364,7 +365,7 @@ public class Application {
             public void actionPerformed(ActionEvent e) {
                 final String course = courseField.getText();
                 try {
-                    final int top = getTopGradeUseCase.getTopGrade(course);
+                    final float top = getTopGradeUseCase.getTopGrade(course);
                     JOptionPane.showMessageDialog(jFrame, "Top Grade: " + top);
                     courseField.setText("");
                 } catch (JSONException ex) {
